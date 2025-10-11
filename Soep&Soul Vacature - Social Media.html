@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soep&Soul - Developer Gezocht</title>
+<title>Soep&Soul - Developer Vacature</title>
 <style>
 * {
 margin: 0;
@@ -14,123 +13,204 @@ box-sizing: border-box;
 
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background: #1a1d20;
+background: linear-gradient(135deg, #32373C 0%, #1a1d20 100%);
 color: #FFFFFF;
 min-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 0;
+padding: 20px;
+overflow-x: hidden;
 }
 
-.social-card {
-width: 1080px;
-height: 1080px;
-max-width: 100vw;
-max-height: 100vh;
-aspect-ratio: 1;
-background: linear-gradient(135deg, #32373C 0%, #1a1d20 100%);
+.container {
+max-width: 900px;
+margin: 0 auto;
 position: relative;
-overflow: hidden;
 }
 
-.bg-bowl {
-position: absolute;
-top: -5%;
-right: -8%;
-width: 45%;
-height: 45%;
-opacity: 0.06;
+.floating-element {
+position: fixed;
+pointer-events: none;
+opacity: 0.08;
+z-index: 0;
 }
 
-.bg-steam {
-position: absolute;
-bottom: -10%;
+.floating-bowl {
+top: 10%;
+right: 5%;
+width: 200px;
+height: 200px;
+animation: float 15s ease-in-out infinite;
+}
+
+.floating-steam {
+top: 40%;
 left: -5%;
-width: 35%;
-height: 50%;
-opacity: 0.05;
+width: 150px;
+height: 300px;
+animation: float 20s ease-in-out infinite reverse;
 }
 
-.content-wrapper {
+.floating-leaf {
+bottom: 15%;
+right: 10%;
+width: 120px;
+height: 120px;
+animation: float 18s ease-in-out infinite;
+}
+
+@keyframes float {
+0%, 100% { transform: translate(0, 0) rotate(0deg); }
+50% { transform: translate(-20px, 20px) rotate(5deg); }
+}
+
+.header {
+text-align: center;
+margin-bottom: 50px;
+animation: fadeInDown 1s ease-out;
 position: relative;
 z-index: 1;
-height: 100%;
-display: flex;
-flex-direction: column;
-padding: 6%;
-}
-
-.header-section {
-text-align: center;
-margin-bottom: 5%;
+background: rgba(50, 55, 60, 0.5);
+backdrop-filter: blur(20px);
+border-radius: 24px;
+padding: 40px;
+border: 1px solid rgba(57, 181, 74, 0.3);
 }
 
 .vacature-badge {
 display: inline-block;
 background: linear-gradient(135deg, #39B54A 0%, #2d8f3c 100%);
 color: #FFFFFF;
-padding: 1.2% 3.5%;
-border-radius: 30px;
+padding: 12px 30px;
+border-radius: 25px;
 font-weight: 700;
-font-size: 1rem;
-letter-spacing: 0.2em;
-margin-bottom: 2.5%;
-box-shadow: 0 6px 20px rgba(57, 181, 74, 0.5);
+font-size: 0.9rem;
+letter-spacing: 2px;
+margin-bottom: 20px;
+box-shadow: 0 4px 15px rgba(57, 181, 74, 0.4);
+animation: pulse 2s ease-in-out infinite;
 }
 
-.logo {
-font-size: 4.5rem;
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.05); }
+}
+
+.logo-text {
+font-size: clamp(2.5rem, 6vw, 4rem);
 font-weight: 800;
 background: linear-gradient(135deg, #39B54A 0%, #2d8f3c 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
-margin-bottom: 2%;
-letter-spacing: -0.02em;
-line-height: 1;
+margin-bottom: 15px;
+letter-spacing: -1px;
 }
 
 .subtitle {
-font-size: 1.8rem;
-font-weight: 600;
+font-size: clamp(1.1rem, 3vw, 1.5rem);
 color: #FFFFFF;
-margin-bottom: 1%;
+font-weight: 600;
+opacity: 0.95;
+margin-bottom: 10px;
 }
 
 .tagline {
-font-size: 1.15rem;
+font-size: clamp(0.95rem, 2.5vw, 1.1rem);
 color: rgba(255, 255, 255, 0.7);
 font-style: italic;
+font-weight: 300;
 }
 
-.divider {
-width: 10%;
+.card {
+background: rgba(50, 55, 60, 0.6);
+backdrop-filter: blur(20px);
+border-radius: 24px;
+padding: clamp(30px, 5vw, 45px);
+margin-bottom: 25px;
+border: 1px solid rgba(57, 181, 74, 0.2);
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+position: relative;
+z-index: 1;
+animation: fadeInUp 1s ease-out;
+animation-fill-mode: both;
+}
+
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+.card:nth-child(4) { animation-delay: 0.6s; }
+.card:nth-child(5) { animation-delay: 0.8s; }
+
+.card:hover {
+transform: translateY(-5px);
+border-color: rgba(57, 181, 74, 0.5);
+box-shadow: 0 16px 48px rgba(57, 181, 74, 0.2);
+}
+
+.card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
 height: 3px;
 background: linear-gradient(90deg, transparent, #39B54A, transparent);
-margin: 3.5% auto;
+border-radius: 24px 24px 0 0;
+opacity: 0;
+transition: opacity 0.4s;
 }
 
-.benefits-section {
-flex: 1;
-display: flex;
-flex-direction: column;
-gap: 2%;
-margin-bottom: 3%;
+.card:hover::before {
+opacity: 1;
 }
 
-.benefit-item {
-background: rgba(57, 181, 74, 0.08);
-backdrop-filter: blur(10px);
-border: 2px solid rgba(57, 181, 74, 0.25);
-border-radius: 15px;
-padding: 2.5% 3%;
+@keyframes fadeInDown {
+from {
+opacity: 0;
+transform: translateY(-30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.intro {
+font-size: clamp(1rem, 2.5vw, 1.15rem);
+line-height: 1.8;
+color: rgba(255, 255, 255, 0.95);
+margin-bottom: 0;
+}
+
+h2 {
+font-size: clamp(1.6rem, 4vw, 2.2rem);
+color: #39B54A;
+margin-bottom: 25px;
+font-weight: 700;
 display: flex;
 align-items: center;
-gap: 2.5%;
+gap: 20px;
+position: relative;
 }
 
-.benefit-icon {
+.section-icon {
+width: 50px;
+height: 50px;
+flex-shrink: 0;
+position: relative;
+}
+
+.icon-circle {
 width: 50px;
 height: 50px;
 background: linear-gradient(135deg, #39B54A, #2d8f3c);
@@ -138,160 +218,247 @@ border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
-flex-shrink: 0;
-box-shadow: 0 4px 15px rgba(57, 181, 74, 0.4);
+box-shadow: 0 4px 15px rgba(57, 181, 74, 0.3);
+position: relative;
 }
 
-.benefit-text {
-font-size: 1.05rem;
-line-height: 1.5;
-color: rgba(255, 255, 255, 0.95);
-}
-
-.benefit-text strong {
-color: #39B54A;
-font-weight: 700;
-}
-
-.cta-section {
-text-align: center;
-padding: 3.5%;
-background: rgba(57, 181, 74, 0.12);
+.icon-circle::after {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+border-radius: 50%;
 border: 2px solid #39B54A;
-border-radius: 18px;
+animation: ripple 2s infinite;
 }
 
-.cta-title {
-font-size: 1.6rem;
-font-weight: 700;
+@keyframes ripple {
+0% {
+transform: scale(1);
+opacity: 1;
+}
+100% {
+transform: scale(1.5);
+opacity: 0;
+}
+}
+
+.content {
+font-size: clamp(1rem, 2.5vw, 1.1rem);
+line-height: 1.8;
+color: rgba(255, 255, 255, 0.9);
+}
+
+.content strong {
 color: #39B54A;
-margin-bottom: 2%;
+font-weight: 600;
+}
+
+.cta-card {
+background: linear-gradient(135deg, rgba(57, 181, 74, 0.15) 0%, rgba(45, 143, 60, 0.05) 100%);
+border: 2px solid #39B54A;
+position: relative;
+overflow: hidden;
+}
+
+.cta-button {
+display: inline-block;
+background: linear-gradient(135deg, #39B54A 0%, #2d8f3c 100%);
+color: #FFFFFF;
+padding: 18px 40px;
+border-radius: 12px;
+text-decoration: none;
+font-weight: 700;
+font-size: clamp(1rem, 2.5vw, 1.15rem);
+margin-top: 25px;
+transition: all 0.3s;
+box-shadow: 0 6px 24px rgba(57, 181, 74, 0.4);
+position: relative;
+z-index: 1;
+}
+
+.cta-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 32px rgba(57, 181, 74, 0.6);
 }
 
 .codeword {
-background: rgba(57, 181, 74, 0.25);
-padding: 1.2% 2.5%;
-border-radius: 10px;
+background: rgba(57, 181, 74, 0.2);
+padding: 12px 20px;
+border-radius: 8px;
 font-family: 'Courier New', monospace;
 font-weight: 700;
 color: #39B54A;
-border: 2px solid rgba(57, 181, 74, 0.5);
+border: 1px solid rgba(57, 181, 74, 0.4);
 display: inline-block;
-margin: 1.5% 0;
-font-size: 1.1rem;
+margin: 15px 0;
+font-size: clamp(0.95rem, 2.5vw, 1.05rem);
 }
 
-.whatsapp-text {
-font-size: 1rem;
-color: rgba(255, 255, 255, 0.85);
-margin-bottom: 0.8%;
-}
-
-.phone-number {
-font-size: 1.2rem;
-font-weight: 700;
+.highlight {
 color: #39B54A;
+font-weight: 600;
+position: relative;
+}
+
+.visual-accent {
+position: absolute;
+pointer-events: none;
+}
+
+.accent-left {
+left: -80px;
+top: 50%;
+transform: translateY(-50%);
+opacity: 0.15;
+}
+
+.accent-right {
+right: -80px;
+top: 50%;
+transform: translateY(-50%);
+opacity: 0.15;
 }
 
 @media (max-width: 768px) {
-.logo {
-font-size: 3rem;
+body {
+padding: 15px;
 }
 
-.subtitle {
-font-size: 1.4rem;
+.card {
+padding: 25px;
+margin-bottom: 20px;
 }
 
-.benefit-text {
-font-size: 0.95rem;
+h2 {
+flex-direction: row;
+gap: 15px;
 }
 
-.cta-title {
-font-size: 1.3rem;
+.header {
+padding: 30px 20px;
 }
+
+.accent-left,
+.accent-right {
+display: none;
+}
+
+.floating-element {
+opacity: 0.05;
+}
+}
+
+.decorative-line {
+width: 60px;
+height: 3px;
+background: linear-gradient(90deg, #39B54A, transparent);
+margin: 20px auto;
 }
 </style>
 </head>
 <body>
-<div class="social-card">
-<svg class="bg-bowl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="100" cy="140" rx="80" ry="20" fill="#39B54A"/>
-<path d="M30,120 Q30,80 100,80 Q170,80 170,120 L170,140 Q170,160 100,160 Q30,160 30,140 Z" fill="#39B54A"/>
+<!-- Floating decorative elements -->
+<svg class="floating-element floating-bowl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="100" cy="140" rx="80" ry="20" fill="#39B54A" opacity="0.3"/>
+<path d="M30,120 Q30,80 100,80 Q170,80 170,120 L170,140 Q170,160 100,160 Q30,160 30,140 Z" fill="#39B54A" opacity="0.5"/>
+<path d="M60,100 Q80,90 100,95 Q120,90 140,100" stroke="#39B54A" stroke-width="2" fill="none" opacity="0.6"/>
 </svg>
 
-<svg class="bg-steam" viewBox="0 0 150 300" xmlns="http://www.w3.org/2000/svg">
-<path d="M50,250 Q60,200 50,150 Q40,100 50,50 Q60,0 70,0" stroke="#39B54A" stroke-width="20" fill="none" stroke-linecap="round"/>
+<svg class="floating-element floating-steam" viewBox="0 0 150 300" xmlns="http://www.w3.org/2000/svg">
+<path d="M50,250 Q60,200 50,150 Q40,100 50,50 Q60,0 70,0" stroke="#39B54A" stroke-width="15" fill="none" opacity="0.3" stroke-linecap="round"/>
+<path d="M80,250 Q90,200 80,150 Q70,100 80,50 Q90,0 100,0" stroke="#39B54A" stroke-width="15" fill="none" opacity="0.2" stroke-linecap="round"/>
 </svg>
 
-<div class="content-wrapper">
-<div class="header-section">
+<svg class="floating-element floating-leaf" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+<path d="M60,10 Q90,30 100,60 Q90,90 60,110 Q30,90 20,60 Q30,30 60,10 Z" fill="#39B54A" opacity="0.4"/>
+<path d="M60,30 L60,90" stroke="#39B54A" stroke-width="2" opacity="0.5"/>
+<path d="M60,50 Q80,50 90,60" stroke="#39B54A" stroke-width="1.5" fill="none" opacity="0.4"/>
+</svg>
+
+<div class="container">
+<div class="header">
 <div class="vacature-badge">VACATURE</div>
-<h1 class="logo">Soep&Soul</h1>
+<h1 class="logo-text">Soep&Soul</h1>
 <p class="subtitle">zoekt een Developer</p>
+<div class="decorative-line"></div>
 <p class="tagline">Die past in een soulvolle omgeving</p>
 </div>
 
-<div class="divider"></div>
-
-<div class="benefits-section">
-<div class="benefit-item">
-<div class="benefit-icon">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white"/>
-</svg>
-</div>
-<div class="benefit-text">
-Smaken uit <strong>Azië, Mediterranée & Caraïben</strong> — culinaire symfonieën!
-</div>
+<div class="card">
+<p class="intro">
+Welkom bij <strong>Soep&Soul</strong>, waar SoeperManStan smaken uit Azië, Mediterranée en Caraïben mixt tot zintuiglijke symfonieën! Onze events bruisen van dampende soepen, muziek en verbinding — een warme community die je zintuigen prikkelt.
+</p>
 </div>
 
-<div class="benefit-item">
-<div class="benefit-icon">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="card">
+<h2>
+<div class="section-icon">
+<div class="icon-circle">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="11" cy="11" r="8" stroke="white" stroke-width="2"/>
 <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round"/>
 </svg>
 </div>
-<div class="benefit-text">
-Gezocht: <strong>WordPress/SeedProd, Mailchimp, AI</strong> developer voor automatisering
 </div>
+Wat zoeken we?
+</h2>
+<p class="content">
+Een creatieve <span class="highlight">developer</span> (WordPress/SeedProd, Mailchimp, AI) voor automatiseringen van onze community-site. Positief en nieuwsgierig? Sluit je aan!
+</p>
 </div>
 
-<div class="benefit-item">
-<div class="benefit-icon">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="3" y="3" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
-<path d="M9 9L15 15M15 9L9 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<div class="card">
+<h2>
+<div class="section-icon">
+<div class="icon-circle">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white"/>
 </svg>
 </div>
-<div class="benefit-text">
-Proef soepen, creëer content & experimenteer met <strong>AI-platforms</strong>
 </div>
+Wat krijg je?
+</h2>
+<p class="content">
+Proef soepen in ons testpanel, creëer smaakcontent en experimenteer met AI (zoals ons Storyplatform). Werk samen met <strong>SoepenSoul</strong> aan culinaire innovatie en boost je creativiteit binnen een dynamische omgeving.
+</p>
 </div>
 
-<div class="benefit-item">
-<div class="benefit-icon">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="9" cy="7" r="4" stroke="white" stroke-width="2"/>
-<path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<div class="card cta-card">
+<h2>
+<div class="section-icon">
+<div class="icon-circle">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 </div>
-<div class="benefit-text">
-Boost je creativiteit binnen een <strong>warme, dynamische community</strong>
 </div>
+Interesse?
+</h2>
+<p class="content">
+Stuur een DM via WhatsApp met codewoord:<br>
+<span class="codeword">SOEPENSOUL PLATFORM</span><br>
+en vertel hoe jij AI-Infused smaak toevoegt aan de automatisering van Soep&Soul en ontvang het projectoverzicht!
+</p>
+<a href="https://wa.me/31616146110" class="cta-button" target="_blank">
+Start WhatsApp Chat →
+</a>
 </div>
 </div>
 
-<div class="cta-section">
-<div class="cta-title">Interesse?</div>
-<p class="whatsapp-text">Stuur WhatsApp met codewoord:</p>
-<div class="codeword">SOEPENSOUL PLATFORM</div>
-<p class="whatsapp-text">+ hoe jij AI-smaak toevoegt</p>
-<p class="phone-number">+31 6 16146110</p>
-</div>
-</div>
-</div>
+<script>
+// Smooth scroll observation for animations
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0)';
+}
+});
+}, { threshold: 0.1 });
+
+cards.forEach(card => observer.observe(card));
+</script>
 </body>
 </html>
